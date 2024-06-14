@@ -14,11 +14,12 @@
                 <h1> Login </h1>
             </legend>
 
-            <h3><label>Email: <input type="email" name="email"> </label> </h3> <br>
-            <h3><label> Senha: <input type="password" name="senha"> </label>
-                <h3> <br>
-                    <h3><input type="submit" value="Login">
-                        <h3>
+            <h3><label>Email: <input type="email" name="email"> </label> <br>
+                <label> Senha: <input type="password" name="senha"> </label>
+                <br>
+                <input type="submit" value="Login">
+            </h3>
+
 
 
 
