@@ -20,11 +20,6 @@
                 <input type="submit" value="Login">
             </h3>
 
-
-
-
-
-
     </form>
 
     <h3><a href="form-cadastro.php">Cadastrar-se</a> </h3> <br>
