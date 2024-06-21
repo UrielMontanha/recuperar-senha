@@ -10,7 +10,13 @@
 
 function conectar()
 {
-    $conexao = mysqli_connect("localhost", "root", "", "recuperar-senha");
+    require_once "config.php";
+    $conexao = mysqli_connect(
+        $config['host'],
+        $config['user'],
+        $config['pass'],
+        $config['db'] );
+    
     if ($conexao === false) {
         echo "Erro ao conectar à base dados. N° do erro: " .
             mysqli_connect_errno($conexao) . ". " .
