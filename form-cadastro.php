@@ -11,6 +11,9 @@
     <form action="cadastrar.php" method="post">
 
         <fieldset>
+            <legend>
+                <h1> Cadastro </h1>
+            </legend>
 
 
             <h3><label> Nome: <input type="text" name="nome"> </label> <br>
