@@ -1,6 +1,0 @@
-<?php
-
-//verificar o email
-//verificaro token
-$email = $_GET['email'];
-$token = $_GET['token'];
