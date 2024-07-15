@@ -1,9 +1,8 @@
 <?php
-
-//verificar o email
-//verificaro token
-$email = $_GET['email'];
-$token = $_GET['token'];
+$email = $_POST['email'];
+$token = $_POST['token'];
+$senha = $_POST['senha'];
+$repetirSenha = $_POST['repetirSenha'];
 
 require_once "conexao.php";
 $conexao = conectar();
@@ -31,33 +30,29 @@ if ($recuperar == null) {
         <h3> Faça um novo pedido de recuperação de senha. </h3>";
         die();
     }
+
+    if ($recuperar['usado'] == 1) {
+        echo "<h2>Esse pedido de recuperação de senha já foi utilizado anteriormente!
+        Para recuperar a senha, faça um novo pedido de recuperação se senha.</h2>";
+        die();
+    }
+
+    if ($senha != $repetirSenha) {
+        echo "<h2>A senha que você digitou é diferente da senha que
+        você digitou no repetir senha. Por favor tente novamente!</h2>";
+        die();
+    }
+
+    $sql2 = "UPDATE usuario SET senha='$senha'
+            WHERE email='$email'";
+
+    executarSQL($conexao, $sql2);
+
+    $sql3 = "UPDATE `recuperar-senha` SET usado=1 WHERE
+            email='$email' AND token='$token'";
+
+    executarSQL($conexao, $sql3);
+
+    echo "<h2>Nova senha cadastrada com sucesso! Faça o login para acessar o sistema. </h2><br>";
+    echo "<h2><a href='index.php'>Acessar o sistema</a></h2>";
 }
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="pt-br">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nova Senha</title>
-</head>
-
-<body>
-    <form action="salvar_nova_senha" method="POST">
-        <fieldset>
-            <legend>
-                <h1>Nova Senha</h1>
-            </legend>
-            <input type="hidden" name="email" value="<?= $email ?>">
-            <input type="hidden" name="token" value="<?= $token ?>">
-            <h3> Email: <?= $email ?> <br> <br> <br>
-                <label>Senha: <input type="password" name="senha"></label> <br> <br>
-                <label>Repita a senha: <input type="password" name="repetirSenha"></label> <br> <br>
-                <input type="submit" value="Salvar nova senha">
-            </h3>
-        </fieldset>
-    </form>
-</body>
-
-</html>
