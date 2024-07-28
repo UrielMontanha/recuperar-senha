@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <form action="recuperar.php" method="post">
+    <form action="recuperar.php" method="POST">
         <fieldset>
             <legend>
                 <h1> Recuperação de Senha </h1>
