@@ -6,6 +6,7 @@ $repetirSenha = $_POST['repetirSenha'];
 
 require_once "conexao.php";
 $conexao = conectar();
+
 $sql = "SELECT * FROM `recuperar-senha` WHERE email='$email' AND token='$token'";
 $resultado = executarSQL($conexao, $sql);
 $recuperar = mysqli_fetch_assoc($resultado);
